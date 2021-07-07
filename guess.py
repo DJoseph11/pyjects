@@ -1,4 +1,4 @@
-#This is a Guess the number game.
+#This is a Guess the number game program.
 import random
 
 guesseTaken = 0
@@ -6,11 +6,11 @@ guesseTaken = 0
 print("Hello! What is your name?")
 name = input()
 
-number = random.randint(1, 20)
-print("Well, " + name + ", I am thinking of a number between 1 and 20.")
+number = random.randint(1, 100)
+print("Well, " + name + ", I am thinking of a number between 1 and 100.")
 
 
-for guesseTaken in range(1, 6):
+for guesseTaken in range(6):
     print("Take a guess.")
     guess = input()
     guess = int(guess)
@@ -22,7 +22,7 @@ for guesseTaken in range(1, 6):
         print("Your guess is too high.")
     
     if guess == number:
-        break
+        break 
 
 if guess == number:
     guesseTaken = str(guesseTaken + 1)
@@ -31,3 +31,7 @@ if guess == number:
 if guess != number:
     number = str(number)
     print("Nope. The number I was thinking of was " + number + ".")
+
+
+# for i in range(3):
+#     print("hello! i is set to",i)
