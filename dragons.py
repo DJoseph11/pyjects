@@ -17,7 +17,7 @@ def choose_cave():  # This function let the player choose a cave based on the in
         cave = input() #This line of code is going to get the option of 1 or 2 
     return cave #This line fo code would return the cave with its value of either 1 or 2
 
-def check_cave(chosen_cave): # A new function
+def check_cave(chosen_cave): # A new function with a parameter
     print("You approach the cave...")
     time.sleep(2)
     print("It is dark and spooky...")
@@ -33,9 +33,8 @@ def check_cave(chosen_cave): # A new function
     else: # if the chosen_cave does not match this line of code runs
         print("Gobbles you down in one bite!!")
 
-play_again = "yes"
-while play_again == "yes" or play_again == "y": #setting the condition of the player type yes or y option ethier or the program is going to return
-    # starting from the top of the program going down again until the program finish running
+play_again = "yes" #This is the first line that runs from the program because its the only global variable thats assign "yes"
+while play_again == "yes" or play_again == "y": #setting the condition of the player type yes or y 
     display_intro() # On line 4 of the code thats being called to display the intro to the player
     cave_number = choose_cave() # The function on line 12 catch the input string saved it to the variable called cave_number
     check_cave(cave_number) #The function on line 20 cave_number take the output of choose_cave which was a string
