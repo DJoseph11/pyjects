@@ -14,5 +14,5 @@ if answer == number1 + number2:
     # Both number1 and number2 are both intergers therefore answer has to be an interger as well
     print("CORRECT!")
 else:
-    # a bug had showed in the terminal where the output of the print for the answer variable if printed within
+    # a bug had showed in the terminal where the output of the print for the answer variable if printed withincrement
     print("NOPE, {a} + {b} is {c}".format(a =number1, b = number2, c=number1 + number2))
