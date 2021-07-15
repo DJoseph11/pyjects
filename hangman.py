@@ -49,9 +49,9 @@ def get_random_word(word_list): # def example(any_name):
     print(word_list[5])  # prints out the word "thundering" at index 5 from the words variable list on line 38 
 
     return word_list[word_index] # returns get_random_word(list[index])
-
-# # print(random.randint(0,10)) # random.randint(0, 10) would produce any random number from 0 to 10
 # print(get_random_word(words))
+
+
 
 
 
