@@ -1,7 +1,9 @@
 # A hangman game
 import random
 
-HANGMAN_PICS = ['''
+# The variable below is in caps to define it is a variable that is constant theres no rules for that.
+# Multi line strings put in the list variable HANGMAN_PICSn 
+HANGMAN_PICS = [''' 
     +---+
         |
         |
@@ -39,6 +41,8 @@ HANGMAN_PICS = ['''
       =====''']
 
 
+
+
 words = "switch psychedelic soak zip woebegone thundering torpid well off dime carriage grouchy need rule robin vase frightening unit coherent weiting credit tested intelligent cry group faint auspicious modern glue silky sordid scratch cat ground purring seal holiday thoughtful rub yawn wicked hungry science digestion history ".split()  # 45 words in total
 # words is going to turn into a list with the split function -- [a, b, c, d, e, f]
 
@@ -56,7 +60,7 @@ def get_random_word(word_list):  # def example(any_name):
     # prints the random number stored in the word_index variable.
     print(word_index)
     # prints out the word "thundering" at index 5 from the words variable list on line 38
-    print(word_list[5])
+    print(word_list[5]) # The variable words on line 46 list passed to get random word function   
 
     return word_list[word_index]  # returns get_random_word(list[index])
 # print(get_random_word(words))
@@ -70,10 +74,11 @@ def display_board(missed_letters, correct_letters, secret_word):
     print()
 
     print("Missed letters:", end=" ")
-    for letter in missed_letters:
-        print(letter, end=" ")
+    for letter in missed_letters: # This loop is going to iterate through and print the missed letter in the global variable missed_letters on line 121 
 
-    print()
+        print(letter, end=" ") # printing the missed letters with a character spacing in between them using  end=" ". exp. f r g h h h
+
+    print() # prints empty space for seperation
 
     blanks = "_" * len(secret_word)
     # blanks = "_" * len(thundering) would result in 10 underscores __________
@@ -83,6 +88,7 @@ def display_board(missed_letters, correct_letters, secret_word):
         if secret_word[i] in correct_letters:
             # if the letter at index i from the word is within the correct letters list
             blanks = blanks[:i] + secret_word[i] + blanks[i + 1:]
+            # blank = blanks[:i = : 10 ="thundering"] + secret_word[i iterate the fist index of the string "thundering"] + blanks[i + 1] moves to the next index of thundering 
             # blanks get updated to
 
     for letter in blanks:
