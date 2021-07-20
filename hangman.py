@@ -52,17 +52,17 @@ print(len(words))  # 45
 def get_random_word(word_list):  # def example(any_name):
 
     # word_index stored the index number from the variable "words" list provided by random.randint(0,(45) - 1)
-    word_index = random.randint(0, len(words) - 1)  
+    # word_index = random.randint(0, len(words) - 1)  
     
-    # word_index = random.choice(words)
+    word_index = random.choice(words)
     # the second parameter get the length of words from the split since indexes start at 0  so it would be the length of len(word) minus 1 since the second parameter is inclusive to cycle through all the list of words.
 
     # prints the random number stored in the word_index variable.
-    print(word_index)
+    # print(word_index)
     # prints out the word "thundering" at index 5 from the words variable list on line 38
-    print(word_list[5]) # The variable words on line 46 list passed to get random word function   
+    # print(word_list[5]) # The variable words on line 46 list passed to get random word function   
 
-    return word_list[word_index]  # returns get_random_word(list[index])
+    return word_list[word_index]  # returns  the "word_list" parameter passing the global "words" variable on line 123
 # print(get_random_word(words))
 
 
@@ -70,7 +70,7 @@ def display_board(missed_letters, correct_letters, secret_word):
     # display_board function takes in three parameters: missed_letters, correct_letters, secret_word
 
     print(HANGMAN_PICS[len(missed_letters)])
-    # prints out the hangman pic from the global variables HANGMAN_PICS list.
+    # prints out the hangman pic from the global variables HANGMAN_PICS list starting at index 0 from the global variables HANGMAN_PICs.
     print()
 
     print("Missed letters:", end=" ")
@@ -91,8 +91,8 @@ def display_board(missed_letters, correct_letters, secret_word):
             # blank = blanks[:i = : 10 ="thundering"] + secret_word[i iterate the fist index of the string "thundering"] + blanks[i + 1] moves to the next index of thundering 
             # blanks get updated to
 
-    for letter in blanks:
-        print(letter, end=" ")
+    for letter in blanks: # Word "Thundering" 
+        print(letter, end=" ") # T_________
 
     print()
 
@@ -102,11 +102,11 @@ def get_guess(already_guessed):
         print("Guess a letter.")
         guess = input()
         guess = guess.lower()
-        if len(guess) != 1:
+        if len(guess) != 1: # if  its "true" the player input is not equal to a single character it will print on line 106
             print("Please enter a single letter.")
-        elif guess in already_guessed:
+        elif guess in already_guessed: #That single character from the player input will pass and check if the letter is in the parameter this being passed on line 130 which is the combine of line 121 + line 122
             print("You have already guessed that letter. choose again.")
-        elif guess not in "abcdefghijklmnopqrstwxyz":
+        elif guess not in "abcdefghijklmnopqrstuvwxyz": # if that single character is not in the string of characters it will print
             print("Please enter a LETTER.")
         else:
             return guess
@@ -117,49 +117,53 @@ def play_again():
     return input().lower().startswith("y")
 
 
-print("H A N G M A N")
+print("H A N G M A N") # The program start running 
 missed_letters = " "
 correct_letters = " "
 secret_word = get_random_word(words)
 game_is_done = False
 
-while True:
-    display_board(missed_letters, correct_letters, secret_word)
-    guess = get_guess(missed_letters + correct_letters)
 
-    if guess in secret_word:
-        correct_letters = correct_letters + guess
+
+while True:
+    display_board(missed_letters, correct_letters, secret_word) # call the function on line 69 and assign line 121 to line 123
+    guess = get_guess(missed_letters + correct_letters) # on line 100 takes in the user input of one character
+
+    if guess in secret_word: # if the return of the single character from line 100 is in the secret word
+        correct_letters = correct_letters + guess # The guess is true the guess character is in the secret_word it will start with empty string on line 122 which would concatenate with the local guess variable that contained that single character
 
 
         found_all_letters = True
 
-        for i in range(len(secret_word)):
-            if secret_word[i] not in correct_letters:
-                found_all_letters = False
-                break
+        for i in range(len(secret_word)): # loops through the length of the secret_word
+            if secret_word[i] not in correct_letters: # if in the word "thundering" which is 10 characters, it will loop through the word's length and check each of the index checking line 133 
+                found_all_letters = False  
+                break # the program will break out of the for loop code block and move to line 148
 
-        if found_all_letters:
-            print("Yes! The secret word is {s}! You have won!".format(s = secret_word))
+        if found_all_letters: # if every single character in the word "thundering" is in the list that stored on line 133,
+            print("Yes! The secret word is {s}! You have won!".format(s = secret_word)) # message for winning the game.
 
-            game_is_done = True
+            game_is_done = True # since all the letters is in the list the game is done 
 
     else:
-        missed_letters = missed_letters + guess   
+        missed_letters = missed_letters + guess   # same thing on line 132 taking line 121 and concact to line 130 in the local scope
 
-        if len(missed_letters) == len(HANGMAN_PICS) - 1:
+        if len(missed_letters) == len(HANGMAN_PICS) - 1: # if missed letters on line 149 has an index length of the HANGMAN_PICS which is 6 because theres no index 7  the it will print out updated data whi
             display_board(missed_letters, correct_letters, secret_word)
 
             print("You have run out of guesses!\nAfter {m} missed guesses and {c} correct guess, the word was {s}.".format(
                 m =len(missed_letters), c =len(correct_letters), s =secret_word))
 
-            game_is_done = True
+            game_is_done = True # all the above would be true which the game is done if not the code will run again on line 127 because the of the while loop is still true 
 
 
-    if game_is_done:
-        if play_again():
+    if game_is_done: # if line 157 is true 
+        if play_again(): # if line 115 is true and the player input "Yes" 
             missed_letters = " "
             correct_letters = " "
-            game_is_done = False
+            game_is_done = False 
             secret_word = get_random_word(words)
         else:
             break
+
+        
